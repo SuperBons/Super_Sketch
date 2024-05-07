@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board View</title>
+</head>
+<body>
+    <div id="debugNavBar">
+        <a href="{{ url_for('home', userID = 'Paul') }}">Home</a>
+        <a href="{{ url_for('myboards', userID = 'Paul') }}">My Board</a>
+        <a href="{{ url_for('join', userID = 'Paul') }}">Join Board</a>
+        <a href="{{ url_for('create', userID = 'Paul') }}">Create Board</a>
+        <a href="{{ url_for('board', userID = 'Paul', boardID = 'MyBoard')}}">Open Board</a>
+        <a href="{{ url_for('index') }}">Log Out</a>
+    </div>
+    
+    Welcome {{username}} to board {{boardname}}!
+</body>
+</html>

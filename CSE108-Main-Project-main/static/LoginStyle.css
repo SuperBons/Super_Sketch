@@ -1,0 +1,104 @@
+body {
+    background-image: linear-gradient(144deg, #ff4040, #0d0de8 50%, #11131e);
+}
+
+.App {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.Logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(360deg);
+    opacity: 0.5;
+    width: 20rem;
+    height: auto;
+    animation: rotateAndGrow 3s ease forwards;
+}
+
+@keyframes rotateAndGrow {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg) scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-50%, -50%) rotate(360deg) scale(2.5);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg) scale(2.5);
+      opacity: 0.5;
+    }
+}
+
+.container1 {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    animation: formMove 3s ease forwards;
+    opacity: 1;
+}
+
+@keyframes formMove {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.UC-Merced {
+    color: #00205b;
+    margin-bottom: 0.5em;
+}
+
+.singleLog {
+    color: #000;
+    margin-bottom: 1em;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+button {
+    background-color: #00205b;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    width: calc(100% - 20px); /* Fit to container minus padding */
+}
+
+#showPass{
+    margin-right: 0px;
+}
+
+#Not-member{
+    color: #00205b;
+    margin-top: 1em;
+}

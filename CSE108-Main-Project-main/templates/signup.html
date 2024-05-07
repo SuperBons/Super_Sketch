@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Super Sketch Sign Up</title>
+    <link rel="stylesheet" href="../static/SignUpStyle.css">
+</head>
+<body>
+<div class="App">
+    <img src="../static/super_sketch.png" class="Logo" alt="Logo Picture">
+    <form id="signupForm" class="container1" action="{{ url_for('signup') }}" method="POST">
+        <h1 class="UC-Merced">Super Sketch</h1>
+        <h2 class="singleLog">Sign Up</h2>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="text" name="name" placeholder="Name" required>
+        <input id="inputPass" name="password" type="password" placeholder="Password" required>
+        <input id="confirmInputPass" name="confirmPassword" type="password" placeholder="Confirm Password" required>
+        <button type="submit">Good to go!</button>
+        <input type="checkbox" id="showPass" onchange="togglePassword()"> Show Passwords
+        <p id="Not-member">Already a member? <a href="{{ url_for('loginPage') }}">Login here</a></p>
+    </form>
+</div>
+</body>
+</html>
+<script>
+    document.getElementById('showPass').onchange = function() {
+        document.getElementById('inputPass').type = this.checked ? 'text' : 'password';
+    };
+</script>
+

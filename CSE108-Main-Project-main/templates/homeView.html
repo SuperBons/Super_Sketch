@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home View</title>
+    <link rel="stylesheet" type="text/css" href="../static/homeView.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<div class="tablink-container">
+    <img src="../static/super_sketch.png" id="tabImage">
+    <button class="tablink active" onclick="toggle('Home', this)">Home</button>
+    <button class="tablink" onclick="toggle('MyBoards', userID = '{{userID}}', this)">My Boards</button>
+    <button class="tablink" onclick="toggle('JoinBoard', this)">Join a Board</button>
+    <button class="tablink" onclick="toggle('CreateBoard', this)">Create a Board</button>
+    <form action="{{ url_for('logout', userID = userID )}}" method="GET">
+        <button class="tablink" type="submit">Log Out</button>
+    </form>
+</div>
+
+<div id="Home" class="tabcontent active">
+    <div class="welcome-section">
+        <h2>Welcome, {{ name }}!</h2>
+        <p>What are we doing today?</p>
+        <div class="action-buttons">
+            <button class="home-button" onclick="toggle('MyBoards', userID = '{{userID}}', this)"><i class="fas fa-paint-brush"></i> View my Boards</button>
+            <button class="home-button" onclick="toggle('JoinBoard', this)"><i class="fas fa-plus"></i> Join a Board</button>
+            <button class="home-button" onclick ="toggle('CreateBoard', this)"><i class="fas fa-chalkboard-teacher"></i> Create a Board</button>
+            <form action="{{ url_for('logout', userID = userID )}}" method="GET">
+                <button class="home-button" type="submit"><i class="fas fa-sign-out-alt"></i> Log Out</button> <!--log out button-->
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="MyBoards" class="tabcontent my-boards">
+    <h1>These are your boards!</h1>
+    <table id="list2" class="board-list">
+        <tr id="board-header">
+            <th>Boards</th>
+            <th>Collaborators</th>
+            <th id = "actions"> Actions</th>
+        </tr>
+        <tr class="board-item">
+           <!-- <td>
+                <button class="tablink">Open</button>
+                <button class="tablink">Leave</button>
+                <button class="tablink">Close</button>
+            </td>
+            -->
+        </tr>
+    </table>
+</div>
+
+<div id="JoinBoard" class="tabcontent">
+    <h1 id = "h1">You've Been Invited!</h1>
+    <p class="centerJoin" id="boardC">Got a Board Code?</p>
+    <form action="{{ url_for('joinBoard', userID = userID) }}" method="POST">
+        <input type="text" id="board-input" name="boardID">
+        <div class="buttons-container">
+            <button type="submit">Let me in!</button>
+        </div>
+    </form>
+</div>
+
+
+
+<div id="CreateBoard" class="tabcontent">
+    <h2>Let's Make a New Board!</h2>
+    <div class="CreateBoardContent">
+        <label for="boardName">What should we call it?</label>
+        <input type="text" id="boardName" placeholder="Legendary name goes here...">
+
+        <label for="collaborator">Who else gets to work on it?</label>
+        <input type="text" id="collaborator" placeholder="Put their username here!">
+        <button type="button" class="big-action-button" onclick="addCollaborator()">Add them!</button>
+
+        <div id = "collaboratorsListCon">
+            <p><b>Collaborators:</b></p>
+            <table id="collaboratorsList" class="collaborators">
+                <tr>
+                    <th>Username</th>
+                    <th>Name</th>
+                </tr>
+            </table>
+        </div>
+
+        <button type="button" class="big-action-button" onclick="createBoard(ownerID = '{{userID}}')">DO IT!</button>
+    </div>
+</div>
+
+<script src="../static/homeView.js"></script>
+</body>
+</html>

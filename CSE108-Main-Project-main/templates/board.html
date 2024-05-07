@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <title>Super Sketch</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='board.css') }}">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <!-- <script src="script.js"></script> -->
+</head>
+
+<body onload="startup('{{userID}}', '{{boardID}}')">
+    <section class="container">
+        <div id="toolbar-container">
+            <button id="toggleToolbar">《 </button>
+            <br><br>
+            <div id="toolbar">
+                <!-- <h1>cse 108!!!</h1> -->
+                <h3>Board Code: {{boardID}}</h3> <br> <br>
+
+                <label for="stroke">Color</label>
+                <input id="stroke" name='stroke' type="color">
+                <br><br>
+
+                <button id="pen" class="tool active">Pen</button>
+                <label for="lineWidth">Pen Width</label>
+                <input id="lineWidth" name='lineWidth' type="number" value="5">
+                <br><br>
+
+                <button id="eraser" class="tool">Eraser</button>
+                <label for="eraserWidth">Eraser Width</label>
+                <input id="eraserWidth" name="eraserWidth" type="number" value="5">
+                <br><br>
+
+                <button id="clear">Clear</button>
+                <br><br>
+
+                <div id="activeTool">Active Tool: Pen</div>
+
+                <button id="saveCanvas">Save Canvas</button>
+                <form action="{{ url_for('home', userID = userID )}}" method="GET">
+                    <button type="submit">Back Home</button>
+                </form>
+
+            </div>
+        </div>
+            <div class="drawing-board">
+                <canvas id="drawing-canvas"></canvas>
+            </div>
+    </section>
+    <!-- <script src="./index.js"></script> -->
+    <script src="{{ url_for('static', filename='board.js') }}"></script>
+</body>
+
+</html>
